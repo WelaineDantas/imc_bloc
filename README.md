@@ -1,5 +1,9 @@
 # imc_bloc
 
+App criado durante acompanhamento de video no canal balta.io. 
+O app possui algumas alterações pessoais.
+ [Link do video](https://www.youtube.com/watch?v=sLWGPVC_CVo&list=UUgnACLvM9O5lfm9ZBh_d3cg&index=54)
+
 A new Flutter project.
 
 ## Getting Started

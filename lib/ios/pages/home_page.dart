@@ -1,3 +1,4 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:imc_bloc/blocs/imc_bloc.dart';
 
@@ -7,10 +8,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var bloc = ImcBloc();
-
   @override
   Widget build(BuildContext context) {
+    final ImcBloc bloc = BlocProvider.of<ImcBloc>(context);
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text("Cálculo de IMC"),
@@ -34,11 +34,18 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-              padding: EdgeInsets.all(20),
-              child: Text(
-                bloc.resultado,
-                textAlign: TextAlign.center,
-              )),
+            padding: EdgeInsets.all(20),
+            child: StreamBuilder<String>(
+              stream: bloc.outResultado,
+              initialData: bloc.resultado,
+              builder: (context, snapshot) {
+                return Text(
+                  snapshot.data,
+                  textAlign: TextAlign.center,
+                );
+              },
+            ),
+          ),
           Padding(
               padding: EdgeInsets.all(20),
               child: CupertinoButton.filled(

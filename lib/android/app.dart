@@ -1,5 +1,7 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:imc_bloc/android/pages/home_page.dart';
+import 'package:imc_bloc/blocs/imc_bloc.dart';
 
 class AndroidApp extends StatelessWidget {
   @override
@@ -10,7 +12,10 @@ class AndroidApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: HomePage(),
+      home: BlocProvider<ImcBloc>(
+        child: HomePage(),
+        bloc: ImcBloc(),
+      ),
     );
   }
 }
